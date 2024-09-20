@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button } from "@/components/ui/button"
 import { useDispatch } from 'react-redux'
-import { acceptInvitation } from '../../Redux/project/action';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { acceptInvitation } from '../../Redux/project/Action';
 
 export default function AcceptInvitation() {
     const location = useLocation();
