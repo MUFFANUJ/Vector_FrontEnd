@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import ProjectCard from '../Project/ProjectCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchProjects, searchProjects } from '../../Redux/project/action'
+import { fetchProjects, searchProjects } from '../../Redux/project/Action'
 
 
 export const tags = [

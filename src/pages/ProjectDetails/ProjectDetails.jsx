@@ -16,7 +16,7 @@ import InviteUserForm from './InviteUserForm'
 import IssueList from './IssueList'
 import Chatbox from './Chatbox'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchProjectById } from '../../Redux/project/action'
+import { fetchProjectById } from '../../Redux/project/Action'
 import { useParams } from 'react-router-dom'
   
 

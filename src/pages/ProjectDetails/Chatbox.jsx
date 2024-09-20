@@ -7,7 +7,7 @@ import { PaperPlaneIcon } from '@radix-ui/react-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchChatByProject, fetchChatMessages, sendMessage } from '../../Redux/Chat/Action'
 import { useParams } from 'react-router-dom'
-import { fetchProjectById } from '../../Redux/project/action'
+import { fetchProjectById } from '../../Redux/project/Action'
 
 export default function Chatbot() {
   const [message,setMessage] = useState("");

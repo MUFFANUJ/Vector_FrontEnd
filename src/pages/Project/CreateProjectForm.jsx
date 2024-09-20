@@ -26,7 +26,7 @@ import { Dialog, DialogClose } from '@radix-ui/react-dialog'
 import {tags} from "../ProjectList/ProjectList"
 import { Cross1Icon } from '@radix-ui/react-icons'
 import { useDispatch } from 'react-redux'
-import { createProjects } from '../../Redux/project/action'
+import { createProjects } from '../../Redux/project/Action'
 
 const CreateProjectForm = () => {
     const dispatch = useDispatch();

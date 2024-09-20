@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useDispatch } from 'react-redux'
-import { inviteToProject } from '../../Redux/project/action'
+import { inviteToProject } from '../../Redux/project/Action'
 import { useParams } from 'react-router-dom'
 
 export default function InviteUserForm() {
