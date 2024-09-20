@@ -9,7 +9,7 @@ import Auth from './pages/Auth/Auth'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { GetUser } from './Redux/Auth/Action'
-import { fetchProjects } from './Redux/project/action'
+import { fetchProjects } from 'src/Redux/project/Action.js'
 import UpgradeSuccess from './pages/Subscription/UpgradeSuccess'
 import AcceptInvitation from './pages/Project/AcceptInvitation'
 
