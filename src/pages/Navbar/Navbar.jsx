@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Dialog,
     DialogContent,
@@ -11,15 +11,34 @@ import {
 import CreateProjectForm from '../Project/CreateProjectForm'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { PersonIcon } from '@radix-ui/react-icons'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Logout } from '../../Redux/Auth/Action'
-  
+import { ArrowLeft, MoonIcon, SunDimIcon } from 'lucide-react'
+import lightLogo from "../../assets/lightLogo.png"
+import darkLogo from "../../assets/darkLogo.png"
+
 
 const Navbar = () => {
     const {auth} = useSelector(store => store);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const [theme, setTheme] = useState('light');
+    useEffect(() => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      setTheme(savedTheme);
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+    }, []);
+  
+    const toggleTheme = () => {
+      const newTheme = theme === 'light' ? 'dark' : 'light';
+      setTheme(newTheme);
+      document.querySelector('body').classList.toggle('dark', newTheme === 'dark');
+      localStorage.setItem('theme', newTheme);
+    };
+  
     const handleLogout = () => {
         dispatch(Logout())
     }
@@ -27,7 +46,7 @@ const Navbar = () => {
     <div className='border-b py-4 px-5 flex items-center justify-between'>
       <div className='flex items-center gap-3'>
             <p className='cursor-pointer' onClick={()=> navigate("/")}>
-                Project Management
+                {location.pathname === "/" ? (<img src={theme === "dark" ? lightLogo : darkLogo} style={{width:"35px", borderRadius:"70px"}}/>) : (<span><ArrowLeft/></span>)}
             </p>
             <Dialog>
                 <DialogTrigger>
@@ -67,6 +86,10 @@ const Navbar = () => {
         <p>
             {auth.user?.fullName}
         </p>
+        <button id="theme-toggle" aria-label="Toggle Dark Mode" onClick={toggleTheme}>
+                {theme === "dark"  ?(<SunDimIcon/>):
+                (<MoonIcon/>)}
+            </button>
       </div>
     </div>
   )
