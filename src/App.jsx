@@ -29,7 +29,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/api/projects/:id' element={<ProjectDetails />} />
+        <Route path='/projects/:id' element={<ProjectDetails />} />
         <Route path='/project/:projectId/issue/:issueId' element={<IssueDetails />} />
         <Route path='/upgrade_plan' element={<Subscription />} />
         <Route path='/upgrade_plan/success' element={<UpgradeSuccess />} />
