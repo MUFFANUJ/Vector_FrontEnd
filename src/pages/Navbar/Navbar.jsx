@@ -62,7 +62,7 @@ const Navbar = () => {
                     <CreateProjectForm />
                 </DialogContent>
             </Dialog>
-            <Button varient="ghost" onClick={()=> navigate("/upgrade_plan")}>
+            <Button varient="ghost" onClick={()=> navigate("/upgrade_plan")} className="hidden sm:block">
                 Upgrade Plan
             </Button>
 
@@ -83,7 +83,7 @@ const Navbar = () => {
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
-        <p>
+        <p className='hidden sm:block'>
             {auth.user?.fullName}
         </p>
         <button id="theme-toggle" aria-label="Toggle Dark Mode" onClick={toggleTheme}>

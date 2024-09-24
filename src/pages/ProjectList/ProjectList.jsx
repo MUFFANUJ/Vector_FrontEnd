@@ -134,7 +134,7 @@ const ProjectList = () => {
 
         <section className='projectListSection w-full lg:w-[48rem]'>
             <div className='flex gap-2 items-center pb-5 justify-between'>
-                <div className='relative p-0 w-full'>
+                <div className='relative p-0 w-full mt-4 sm:mt-0'>
                     <Input 
                     onChange={handleSearchChange}
                     placeholder = "Search For Projects"

@@ -29,7 +29,9 @@ export default function CreateCommentForm({issueId}) {
         dispatch(createComment({content:data.content,issueId},{headers: {
             'Content-Type': 'application/json',
           }}));
-        console.log("Form submitted successfull" ,data)
+          form.reset({ content: "" });
+        // console.log("Form submitted successfull" ,data)
+        
     }
   return (
     <div>

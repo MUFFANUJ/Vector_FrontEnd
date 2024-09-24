@@ -27,7 +27,7 @@ export default function IssueList({status,title}) {
   return (
     <div>
       <Dialog>
-        <Card className="w-full md:w-[260px] lg:w-[280px]">
+        <Card className="w-full md:w-[260px] lg:w-[280px] mb-2 sm:mb-0">
             <CardHeader>
                 {title}
             </CardHeader>

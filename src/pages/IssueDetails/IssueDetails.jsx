@@ -32,53 +32,10 @@ export default function IssueDetails() {
         dispatch(fetchComments(issueId));
     },[issueId])
   return (
-    <div className='px-20 py-8 text-gray-400'>
-        <div className='flex justify-between border p-10 rounded-lg'>
-            <ScrollArea className="h-[80vh] w-[60%]"> 
-                <h1 className='text-lg font-semibold text-gray-400'>
-                    {issue.issueDetails?.title}
-                </h1>
-                <div className='py-5'>
-                    <h2 className='font-semibold text-gray-400'>
-                        Description
-                    </h2>
-                    <p className='text-gray-400 text-sm mt-3'>
-                    {issue.issueDetails?.description}
-                    </p>
-                </div>
+    <div className='px-20 sm:px-12 py-8 text-gray-400 flex justify-between flex-wrap'>
+        
 
-                <div className='mt-5'>
-                    <h1 className='pb-3'>
-                        Activity
-                    </h1>
-                    <Tabs defaultValue = "comments" className="w-[400px]">
-                        <TabsList className="mb-5">
-                            <TabsTrigger value="all">
-                                ALL
-                            </TabsTrigger>
-                            <TabsTrigger value="comments">
-                                Comments
-                            </TabsTrigger>
-                            <TabsTrigger value="history">
-                                History
-                            </TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="all">
-                            Alllllll
-                        </TabsContent>
-                        <TabsContent value="comments">
-                            <CreateCommentForm issueId={issueId}/>
-                            <div className='mt-8 space-y-6'>
-                                {comment.comments.map((item)=> <CommentCard key={item} item={item}/>)}
-                            </div>
-                        </TabsContent>
-                        <TabsContent value="history">
-                            History Saved
-                        </TabsContent>
-                    </Tabs>
-                </div>
-            </ScrollArea>
-            <div className='w-full lg:w-[30%] space-y-2'>
+            <div className='w-full lg:w-[30%] space-y-2 '>
             <Select onValueChange={handleUpdateIssueStatus}>
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="To Do" />
@@ -149,8 +106,55 @@ export default function IssueDetails() {
             </div>
 
             </div>
+
+            <div className='flex justify-between border p-10 rounded-lg sm:w-[100vw] lg:w-[60vw] sm:mt-3'>
+            <ScrollArea className="w-full"> 
+                <h1 className='text-lg font-semibold text-gray-400'>
+                    {issue.issueDetails?.title}
+                </h1>
+                <div className='py-5'>
+                    <h2 className='font-semibold text-gray-400'>
+                        Description
+                    </h2>
+                    <p className='text-gray-400 text-sm mt-3'>
+                    {issue.issueDetails?.description}
+                    </p>
+                </div>
+
+                <div className='mt-5'>
+                    <h1 className='pb-3'>
+                        Activity
+                    </h1>
+                    <Tabs defaultValue = "comments" className="w-[400px]">
+                        <TabsList className="mb-5">
+                            <TabsTrigger value="all">
+                                ALL
+                            </TabsTrigger>
+                            <TabsTrigger value="comments">
+                                Comments
+                            </TabsTrigger>
+                            <TabsTrigger value="history">
+                                History
+                            </TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="all">
+                            Alllllll
+                        </TabsContent>
+                        <TabsContent value="comments">
+                            <CreateCommentForm issueId={issueId}/>
+                            <div className='mt-8 space-y-6'>
+                                {[...comment.comments].reverse().map((item)=> <CommentCard key={item} item={item}/>)}
+                            </div>
+                        </TabsContent>
+                        <TabsContent value="history">
+                            History Saved
+                        </TabsContent>
+                    </Tabs>
+                </div>
+            </ScrollArea>
+            </div>
         </div>
 
-    </div>
+    // </div>
   )
 }

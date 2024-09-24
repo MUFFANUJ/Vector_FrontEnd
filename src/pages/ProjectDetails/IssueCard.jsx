@@ -32,9 +32,9 @@ export default function IssueCard({projectId,item}) {
                     <DropdownMenuItem>
                         Done
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    {/* <DropdownMenuItem>
                         Edit
-                    </DropdownMenuItem>
+                    </DropdownMenuItem> */}
                     <DropdownMenuItem onClick={handleIssueDelete}>
                         Delete
                     </DropdownMenuItem>

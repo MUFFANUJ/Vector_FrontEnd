@@ -34,7 +34,7 @@ const ProjectDetails = () => {
         dispatch(fetchProjectById(id))
     },[id])
   return (
-    <div className='mt-5 lg:px-10'>
+    <div className='mt-5 lg:px-10 p-3'>
       <div className='lg:flex gap-5 justify-between pb-4'>
         <ScrollArea className="h-screen lg:w-[72%] pr-2">
             <div className='pb-10 w-full text-gray-400'>
@@ -61,7 +61,7 @@ const ProjectDetails = () => {
                             <AvatarFallback>{item.fullName[0]}</AvatarFallback>
                         </Avatar>)}
                     </div>
-                    <Dialog >
+                    <Dialog>
                         <DialogTrigger>
                                 <Button size="sm" varient="outline" className="ml-2" onClick={handleProjectInvitation}>
                                     <span>
@@ -71,9 +71,9 @@ const ProjectDetails = () => {
                                 </Button>
                         </DialogTrigger>
                         <DialogContent>
-                            <DialogHeader>
+                            <DialogTitle>
                                 Invite User
-                            </DialogHeader>
+                            </DialogTitle>
                             <InviteUserForm />
                         </DialogContent>
                     </Dialog>
@@ -101,8 +101,8 @@ const ProjectDetails = () => {
 
             <section>
                 <p className='py-5 border-b text-lg -tracking-wider'>Tasks</p>
-                <div className='lg:flex md:flex gap-3 justify-between py-5'>
-                    <IssueList status="pending" title = "Todo list"/>
+                <div className='lg:flex md:flex gap-3 justify-between py-5 sm:flex gap-10'>
+                    <IssueList status="pending" title = "Todo list" />
                     <IssueList status="in_progress" title = "In progress"/>
                     <IssueList status="done" title = "Done"/>
                 </div>
