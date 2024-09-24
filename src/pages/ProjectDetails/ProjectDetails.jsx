@@ -27,7 +27,7 @@ const ProjectDetails = () => {
     const {project} = useSelector(store=> store);
     const {id} = useParams();
     const handleProjectInvitation = () =>{
-        console.log("handle")
+        // console.log("handle")
     }
 
     useEffect(()=> {

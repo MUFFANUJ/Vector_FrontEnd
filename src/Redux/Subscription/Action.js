@@ -8,7 +8,7 @@ export const getUserSubscription = () => async(dispatch) => {
                 "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
             }
         })
-        console.log("User Subscription ", response.data);
+        // console.log("User Subscription ", response.data);
         dispatch({type:GET_USER_SUBSCRIPTION_SUCCESS, payload:response.data})
     }catch(error){
         console.log("error",error.message);
@@ -27,7 +27,7 @@ export const upgradeSubscription = ({planType}) => async(dispatch) => {
                 "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
             }
         })
-        console.log("upgraded Subscription ", response.data);
+        // console.log("upgraded Subscription ", response.data);
         dispatch({type:UPDATE_SUBSCRIPTION_SUCCESS, payload:response.data})
     }catch(error){
         console.log("error",error.message);

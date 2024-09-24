@@ -34,7 +34,7 @@ export default function CreateIssueForm({status}) {
             projectId:id,
             status,
         }))
-        console.log("Form submitted successfull" ,data)
+        // console.log("Form submitted successfull" ,data)
     }
   return (
     <div>

@@ -7,7 +7,7 @@ export const fetchProjects = ({category,tag}) => {
     dispatch({type:FETCH_PROJECTS_REQUEST})
     try{
         const {data} = await api.get("/api/projects",{params:{category,tag}});
-        console.log("all category projects data", data);
+        // console.log("all category projects data", data);
         dispatch({type:FETCH_PROJECTS_SUCCESS, projects:data})
     }catch(error){
         console.log("error",error);
@@ -20,7 +20,7 @@ export const searchProjects = (keyword) => async(dispatch) => {
     dispatch({type:SEARCH_PROJECT_REQUEST})
     try{
         const {data} = await api.get("/api/projects/search?keyword="+keyword);
-        console.log("searched project data", data);
+        // console.log("searched project data", data);
         dispatch({type:SEARCH_PROJECT_SUCCESS, projects:data})
     }catch(error){
         console.log("error",error);
@@ -34,7 +34,7 @@ export const createProjects = (projectData) => async(dispatch) => {
         const {data} = await api.post("/api/projects" ,projectData,{headers: {
             'Content-Type': 'application/json',
           }});
-        console.log("project created successfully", data);
+        // console.log("project created successfully", data);
         dispatch({type:CREATE_PROJECT_SUCCESS, projects:data})
     }catch(error){
 
@@ -48,7 +48,7 @@ export const fetchProjectById = (projectId) => async(dispatch) => {
     dispatch({type:FETCH_PROJECT_BY_ID_REQUEST})
     try{
         const {data} = await api.get("/api/projects/"+projectId);
-        console.log("project data", data);
+        // console.log("project data", data);
         dispatch({type:FETCH_PROJECT_BY_ID_SUCCESS, project:data})
     }catch(error){
         console.log("error",error);
@@ -60,7 +60,7 @@ export const deleteProjectById = ({projectId}) => async(dispatch) => {
     dispatch({type:DELETE_PROJECT_REQUEST})
     try{
         const {data} = await api.delete("/api/projects/"+projectId);
-        console.log("deleted data", data);
+        // console.log("deleted data", data);
         dispatch({type:DELETE_PROJECT_SUCCESS, projectId})
     }catch(error){
         console.log("error",error);
@@ -94,7 +94,7 @@ export const acceptInvitation = ({token,navigate}) => async(dispatch) => {
     }});
         console.log(data)
         navigate("/project/"+ data.projectId)
-        console.log("Accepted Invite to project with id", data.projectId);
+        // console.log("Accepted Invite to project with id", data.projectId);
         dispatch({type:ACCEPT_INVITATION_SUCCESS, payload:data})
     }catch(error){
         console.log("error",error);

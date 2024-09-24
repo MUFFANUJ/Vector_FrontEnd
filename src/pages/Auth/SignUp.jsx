@@ -27,7 +27,7 @@ export default function SignUp() {
 
     const onSubmit = (data)=>{
         dispatch(Register(data));
-        console.log("Form submitted successfull" ,data)
+        // console.log("Form submitted successfull" ,data)
     }
   return (
     <div>

@@ -6,7 +6,7 @@ export const fetchIssues = (id) => {
         dispatch({type:FETCH_ISSUES_REQUEST});
         try{
             const response = await api.get(`/api/issues/project/${id}`);
-            console.log("Issues FETCHED", response.data);
+            // console.log("Issues FETCHED", response.data);
             dispatch({type:FETCH_ISSUES_SUCCESS, issues:response.data});
         }catch(error){
             console.log("ERROR", error.message);
@@ -21,7 +21,7 @@ export const fetchIssueById = (id) => {
         dispatch({type:FETCH_ISSUE_BY_ID_REQUEST});
         try{
             const response = await api.get(`/api/issues/${id}`);
-            console.log("Issues By Id FETCHED", response.data);
+            // console.log("Issues By Id FETCHED", response.data);
             dispatch({type:FETCH_ISSUE_BY_ID_SUCCESS, issues:response.data});
         }catch(error){
             console.log("ERROR", error.message);
@@ -36,7 +36,7 @@ export const updateIssueStatus = ({id,status}) => {
         dispatch({type:UPDATE_ISSUE_STATUS_REQUEST});
         try{
             const response = await api.put(`/api/issues/${id}/status/${status}`);
-            console.log("Issues status UPDATED", response.data);
+            // console.log("Issues status UPDATED", response.data);
             dispatch({type:UPDATE_ISSUE_STATUS_SUCCESS, issues:response.data});
         }catch(error){
             console.log("ERROR", error.message);
@@ -50,7 +50,7 @@ export const assignUserToIssue = ({IssueId,userid}) => {
         dispatch({type:ASSIGNED_ISSUE_TO_USER_REQUEST});
         try{
             const response = await api.put(`/api/issues/${IssueId}/assignee/${userid}`);
-            console.log("User assigned to the Issue", response.data);
+            // console.log("User assigned to the Issue", response.data);
             dispatch({type:ASSIGNED_ISSUE_TO_USER_SUCCESS, issues:response.data});
         }catch(error){
             console.log("ERROR", error.message);

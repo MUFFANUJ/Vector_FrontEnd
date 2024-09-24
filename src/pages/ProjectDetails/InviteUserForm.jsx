@@ -27,7 +27,7 @@ export default function InviteUserForm() {
 
     const onSubmit = (data)=>{
       dispatch(inviteToProject({email:data.email,projectId:id}))
-        console.log("Form submitted successfull" ,data)
+        // console.log("Form submitted successfull" ,data)
     }
   return (
     <div>

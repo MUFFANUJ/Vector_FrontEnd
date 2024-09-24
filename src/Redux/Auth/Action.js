@@ -10,7 +10,7 @@ export const Register = (userData) => async(dispatch)=> {
             localStorage.setItem("jwt",data.jwt);
             dispatch({type:REGISTER_SUCCESS,payload:data})
         }
-        console.log("Registered Succesfully", data);
+        // console.log("Registered Succesfully", data);
     }catch(error){
         console.log(error);
     }
@@ -25,7 +25,7 @@ export const Login = (userData) => async(dispatch)=> {
             localStorage.setItem("jwt",data.jwt);
             dispatch({type:LOGIN_SUCCESS,payload:data})
         }
-        console.log("Login Succesfully", data);
+        // console.log("Login Succesfully", data);
     }catch(error){
         console.log(error);
     }
@@ -43,7 +43,7 @@ export const GetUser = () => async(dispatch)=> {
         // if(data.jwt){
             dispatch({type:GET_USER_SUCCESS,payload:data})
         // }
-        console.log("User Found", data);
+        // console.log("User Found", data);
     }catch(error){
         console.log(error);
     }

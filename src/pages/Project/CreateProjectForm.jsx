@@ -41,7 +41,7 @@ const CreateProjectForm = () => {
 
     const onSubmit = (data)=>{
         dispatch(createProjects(data));
-        console.log("Form submitted successfull" ,data)
+        // console.log("Form submitted successfull" ,data)
     }
 
     const handleTagsChange=(newValue)=> {

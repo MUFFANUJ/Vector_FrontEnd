@@ -26,7 +26,7 @@ export default function SignIn() {
 
     const onSubmit = (data)=>{
         dispatch(Login(data));
-        console.log("Form submitted successfull" ,data)
+        // console.log("Form submitted successfull" ,data)
     }
   return (
     <div>

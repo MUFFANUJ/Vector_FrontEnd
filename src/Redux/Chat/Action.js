@@ -8,7 +8,7 @@ export const sendMessage = (messageData) => {
             const response = await api.post("/api/messages/send", messageData,{headers: {
                 'Content-Type': 'application/json',
               }})
-            console.log("message sent",response.data);
+            // console.log("message sent",response.data);
             dispatch({type:SEND_MESSAGE_SUCCESS,message:response.data});
         }catch(error){
             dispatch({type:SEND_MESSAGE_FAILTURE, error:error.message})
@@ -23,7 +23,7 @@ export const fetchChatByProject = (projectId) => {
         dispatch({type:FETCH_CHAT_BY_PROJECT_REQUEST});
         try{
             const response = await api.get(`/api/projects/${projectId}/chat`);
-            console.log("fetch chat",response.data);
+            // console.log("fetch chat",response.data);
             dispatch({type:FETCH_CHAT_BY_PROJECT_SUCCESS,chat:response.data});
         }catch(error){
             dispatch({type:FETCH_CHAT_BY_PROJECT_FAILTURE, error:error.message})
@@ -38,7 +38,7 @@ export const fetchChatMessages = (chatId) => {
         dispatch({type:FETCH_CHAT_MESSAGE_REQUEST});
         try{
             const response = await api.get(`/api/messages/chat/${chatId}`);
-            console.log("fetch messages",response.data);
+            // console.log("fetch messages",response.data);
             dispatch({type:FETCH_CHAT_MESSAGE_SUCCESS,chatId,messages:response.data});
         }catch(error){
             dispatch({type:FETCH_CHAT_MESSAGE_FAILTURE, error:error.message})
