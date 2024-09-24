@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Card ,CardContent} from "@/components/ui/card"
 import {Button } from "@/components/ui/button"
 import {ScrollArea } from "@/components/ui/scroll-area"
@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input"
 import ProjectCard from '../Project/ProjectCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProjects, searchProjects } from '../../Redux/project/Action'
+import { Calendar } from "@/components/ui/calendar"
+
 
 
 export const tags = [
@@ -39,6 +41,9 @@ export const tags = [
 
 const ProjectList = () => {
     const [keyword,setKeyword] = useState("")
+    const [showIndex,setShowIndex] = useState(3)
+    const [showFilter,setShowFilter] = useState(false)
+    const [date, setDate] = useState(new Date())
     const {project}  = useSelector(store => store);
     const dispatch = useDispatch();
     const handleFilterCategory= (value) => {
@@ -61,22 +66,33 @@ const ProjectList = () => {
         setKeyword(e.target.value);
         dispatch(searchProjects(e.target.value));
     }
-
+    useEffect(() => {
+        const handleResize = () => {
+          if (window.innerWidth < 600) {
+            setShowFilter(true);
+          } else {
+            setShowFilter(false); 
+          }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
   return (
     <>
-      <div className='relative px-3 lg:px-0 lg:flex gap-5 justify-center py-5'>
-        <section className='filterSection '>
+      <div className='relative px-3 lg:px-4 lg:flex gap-5 justify-center py-5'>
+        <section className={`filterSection `}>
             <Card className="p-5 sticky top-10">
                 <div className='flex justify-between lg:w-[20rem]'>
-                    <p className='text-xl -tracking-wider'>
+                    <p className={`text-xl -tracking-wider`}>
                         Filters
                     </p>
-                    <Button variant="ghost" size="icon">
+                    <Button varient="ghost" size="icon" className="cursor-pointer" onClick={()=> setShowFilter(!showFilter)}>
                         <MixerHorizontalIcon/>
                     </Button>
                 </div>
 
-                <CardContent className="mt-5">
+                <CardContent className={showFilter ? `mt-5 hidden` :"mt-5"}>
                     <ScrollArea className="space-y-3 h-[73vh]">
                         <div>
                             <h1 className='pb-2 text-gray-400 border-b'>
@@ -115,21 +131,37 @@ const ProjectList = () => {
                             <div className='pt-5 '>
                                 <RadioGroup defaultValue="ALL" onValueChange={(value) => handleFilterTags(value)} className="space-y-2 pt-2">
                                 {
-                                    tags.map((item)=> 
-                                <div className='flex items-center gap-2 cursor-pointer' key={item}>
+                                    tags.map((item,index)=> {
+                                        if (index <= showIndex){
+                                            return (
+                                                <div className='flex items-center gap-2 cursor-pointer' key={item}>
                                     <RadioGroupItem value={item} id={`r1-${item}`}/>
                                     <Label htmlFor = {`r1-${item}`}>{item}</Label>
                                 </div>
-                                )}
+                                            )
+                                        }
+                                
+                                    })}
                                
                                 </RadioGroup>
+                                <div className="flex justify-center mt-1">
+                                <Button onClick={()=> {
+                                    if(showIndex < tags.length){
+                                        setShowIndex(tags.length)
+                                    }else{
+                                        setShowIndex(3)
+                                    }
+                                }}>
+                                    {showIndex < tags.length ? (<span>Show More</span>) : (<span>Show Less</span>)}
+                                </Button>
+                                </div>
                             </div>
                         </div>
                     </ScrollArea>
                 </CardContent>
                 
             </Card>
-
+            
         </section>
 
         <section className='projectListSection w-full lg:w-[48rem]'>
@@ -145,7 +177,7 @@ const ProjectList = () => {
             </div>
 
             <div>
-                <div className='space-y-5 min-h-[74vh]'>
+                <div className='space-y-5 mb-8'>
 {
     keyword ? project.searchProjects.map((item) => 
         <ProjectCard key={item.id+1039302032939} item={item}/> // same id ho jayegi dono project card me isliye have to make the ids different
@@ -158,6 +190,26 @@ const ProjectList = () => {
             </div>
 
         </section>
+        { window.innerWidth > 1024 ?<section>
+       
+
+
+  <Calendar
+    mode="single"
+    selected={date}
+    onSelect={setDate}
+    className="rounded-md border"
+  />
+    {/* <div>
+        <h2>
+            Alerts
+        </h2>
+        <div>
+            Random
+        </div>
+    </div> */}
+
+        </section> : ""}
       </div>
     </>
   )
