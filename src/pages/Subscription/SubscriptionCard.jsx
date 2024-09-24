@@ -7,6 +7,7 @@ import { createPayment } from '../../Redux/Payment/Action';
 export default function SubscriptionCard({data}) {
   const dispatch = useDispatch();
   const handleUpgrade = () => {
+    alert("payment gateway coming soon");
     dispatch(createPayment({planType:data.planType,jwt:localStorage.getItem('jwt')}));
   }
   return (
