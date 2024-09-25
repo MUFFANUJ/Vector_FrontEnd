@@ -68,7 +68,7 @@ const ProjectList = () => {
     }
     useEffect(() => {
         const handleResize = () => {
-          if (window.innerWidth < 600) {
+          if (window.innerWidth < 800) {
             setShowFilter(true);
           } else {
             setShowFilter(false); 
@@ -166,7 +166,7 @@ const ProjectList = () => {
 
         <section className='projectListSection w-full lg:w-[48rem]'>
             <div className='flex gap-2 items-center pb-5 justify-between'>
-                <div className='relative p-0 w-full mt-4 sm:mt-0'>
+                <div className='relative p-0 w-full mt-4 sm:mt-4 md:mt-4 lg:mt-0'>
                     <Input 
                     onChange={handleSearchChange}
                     placeholder = "Search For Projects"
