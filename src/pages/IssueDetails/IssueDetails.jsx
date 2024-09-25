@@ -24,15 +24,15 @@ export default function IssueDetails() {
     const {issue,comment} = useSelector(store => store)
 
     const handleUpdateIssueStatus = (status) =>{
+        // console.log(issue)
         dispatch(updateIssueStatus({id:issueId,status}))
-        console.log(status)
     }
     useEffect(()=>{
         dispatch(fetchIssueById(issueId));
         dispatch(fetchComments(issueId));
     },[issueId])
   return (
-    <div className='px-20 sm:px-12 py-8 text-gray-400 flex justify-between flex-wrap'>
+    <div className='px-12 sm:px-12 py-8 text-gray-400 flex justify-between flex-wrap'>
         
 
             <div className='w-full lg:w-[30%] space-y-2 '>
@@ -41,7 +41,7 @@ export default function IssueDetails() {
                     <SelectValue placeholder="To Do" />
                 </SelectTrigger>
                 <SelectContent>
-                    <SelectItem value="todo">Pending</SelectItem>
+                    <SelectItem value="pending">Pending</SelectItem>
                     <SelectItem value="in_progress">In Progress</SelectItem>
                     <SelectItem value="done">Done</SelectItem>
                 </SelectContent>
@@ -107,7 +107,7 @@ export default function IssueDetails() {
 
             </div>
 
-            <div className='flex justify-between border p-10 rounded-lg sm:w-[100vw] lg:w-[60vw] sm:mt-3'>
+            <div className='flex justify-between border p-5 rounded-lg sm:w-[88vw] sm:mt-3 lg:w-[60vw] mt-3 sm:mt-0 w-[75vw]'>
             <ScrollArea className="w-full"> 
                 <h1 className='text-lg font-semibold text-gray-400'>
                     {issue.issueDetails?.title}

@@ -34,7 +34,7 @@ export default function CreateCommentForm({issueId}) {
         
     }
   return (
-    <div>
+    <div className='w-[65vw]'>
       <Form {...form}>
             <form className='flex gap-2' onSubmit={form.handleSubmit(onSubmit)}>
             <FormField control={form.control} 
@@ -52,7 +52,7 @@ export default function CreateCommentForm({issueId}) {
                         <FormControl>
                             <Input {...field}
                             type="text"
-                            className="w-[20rem]"
+                            className="sm:w-[20rem]"
                             placeholder = "Comment Here"
                             />
                         </FormControl>

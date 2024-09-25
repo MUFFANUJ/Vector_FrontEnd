@@ -6,13 +6,17 @@ import {Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback } from '@radix-ui/react-avatar'
 import UserList from './UserList'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { deleteIssue } from '../../Redux/Issue/Action'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteIssue, updateIssueStatus } from '../../Redux/Issue/Action'
 export default function IssueCard({projectId,item}) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const {issue} = useSelector(store => store)
     const handleIssueDelete = () => {
         dispatch(deleteIssue(item.id))
+    }
+    const handleUpdateIssueStatus = (status) =>{
+        dispatch(updateIssueStatus({id:item.id,status}))
     }
   return (
     <Card className="rounded-md py-1 pb-2">
@@ -26,10 +30,13 @@ export default function IssueCard({projectId,item}) {
                     <Button className="rounded-full" size="icon"><DotsVerticalIcon /></Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem onClick={()=> handleUpdateIssueStatus("pending")}>
+                        Pending
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={()=> handleUpdateIssueStatus("in_progress")}>
                         In - Progress
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem onClick={()=> handleUpdateIssueStatus("done")}>
                         Done
                     </DropdownMenuItem>
                     {/* <DropdownMenuItem>

@@ -11,7 +11,7 @@ export default function CommentCard({item}) {
         dispatch(deleteComment(item.id));
     }
   return (
-    <div className='flex justify-between'>
+    <div className='flex sm:justify-between'>
         <div className='flex items-center gap-4'>
             <Avatar>
                 <AvatarFallback>
