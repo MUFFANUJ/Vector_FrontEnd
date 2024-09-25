@@ -144,8 +144,8 @@ const ProjectList = () => {
                                     })}
                                
                                 </RadioGroup>
-                                <div className="flex justify-center mt-1">
-                                <Button onClick={()=> {
+                                <div className="flex justify-center mt-1 ">
+                                <Button className="mb-3" onClick={()=> {
                                     if(showIndex < tags.length){
                                         setShowIndex(tags.length)
                                     }else{
