@@ -86,10 +86,10 @@ const Navbar = () => {
         <p className='hidden sm:block'>
             {auth.user?.fullName}
         </p>
-        <button id="theme-toggle" aria-label="Toggle Dark Mode" onClick={toggleTheme}>
+        {/* <button id="theme-toggle" aria-label="Toggle Dark Mode" onClick={toggleTheme}>
                 {theme === "dark"  ?(<SunDimIcon/>):
                 (<MoonIcon/>)}
-            </button>
+            </button> */}
       </div>
     </div>
   )
